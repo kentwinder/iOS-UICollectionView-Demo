@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AnimalsViewController: UIViewController, UICollectionViewDataSource {
+class AnimalsViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     var size: CGSize!
@@ -26,7 +26,9 @@ class AnimalsViewController: UIViewController, UICollectionViewDataSource {
         collectionView.dataSource = self
         collectionView.delegate = self
     }
+}
 
+extension AnimalsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 33
     }
