@@ -11,8 +11,8 @@ import UIKit
 class AnimalsViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var size: CGSize!
     var itemsPerRow: CGFloat = 3
+    var itemSize: CGFloat! = 0.0
     var selectedAnimal = ""
     
     override func viewDidLoad() {
@@ -21,7 +21,7 @@ class AnimalsViewController: UIViewController {
         if (UI_USER_INTERFACE_IDIOM() == .pad){
             itemsPerRow = 6
         }
-        size = CGSize(width: view.frame.width / itemsPerRow, height: view.frame.width / itemsPerRow)
+        itemSize = view.frame.width / itemsPerRow
         
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -43,7 +43,7 @@ extension AnimalsViewController: UICollectionViewDataSource {
 
 extension AnimalsViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: size.width, height: size.height)
+        return CGSize(width: itemSize, height: itemSize)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
